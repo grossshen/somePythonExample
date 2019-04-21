@@ -35,12 +35,12 @@ def getNewsdetail(newsUrl):
     res=requests.get(newsUrl)
     res.encoding='utf-8'
     soup=BeautifulSoup(res.text,'lxml')
-    newsTitle=soup.find("h1",class_="main-title")
-    newsArticle=soup.find("div",class_="article")
+
+    newsTitle=str(soup.find("h1",class_="main-title"))
+    newsArticle=str(soup.find("div",class_="article"))
     list=[newsTitle,newsArticle]
-    print(type(list))
     jsonObject=json.dumps(list)
-    return newsTitle,newsArticle
+    return list
 
 
 def test1():
